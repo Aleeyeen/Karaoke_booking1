@@ -65,7 +65,7 @@ const Prime = ( {token}) => {
     
           <div className='md:flex flex-col fixed justify-start items-center h-screen w-screen mt-10'>
             <div className=' border-double border-8 border-pink-800 p-4 rounded-lg bg-palepink'>
-              <h1 className='text-3xl font-bold tracking-wider uppercase text-pink-800'>Deluxe Room</h1>
+              <h1 className='text-3xl font-bold tracking-wider uppercase text-pink-800'>Prime Room</h1>
             </div>
     
             <div className='flex flex-wrap justify-evenly w-4/5 h-2/5 mt-10 overflow-auto'>

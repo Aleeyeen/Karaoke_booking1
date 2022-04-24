@@ -3,10 +3,9 @@ import Layout from '../components/layout'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-
 const URL = `http://localhost/api/logout`
 
-export default function logout({ token }) {
+export default function Logout({ token }) {
 
     const [status, setStatus] = useState('')
 
@@ -23,7 +22,7 @@ export default function logout({ token }) {
     return (
         <Layout>
             <Head>
-                <title>Online Community Blog</title>
+                <title>Online Karaoke Booking</title>
             </Head>
             <div className='flex flex-col fixed justify-center items-center h-screen w-screen'>
                 <div className='text-center divide-y-2 divide-black -mt-28'>

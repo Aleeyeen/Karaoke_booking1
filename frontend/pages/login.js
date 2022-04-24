@@ -5,7 +5,6 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 
-
 const URL = `http://localhost/api/login`
 
 export default function Login({ token }) {
@@ -17,28 +16,25 @@ export default function Login({ token }) {
 
   const login = async (req, res) => {
     try {
-      let result = await axios.post(URL,
-        { username, password, checktoken },
-        { withCredentials: true })
-      console.log('result: ', result)
-      console.log('result.data:  ', result.data)
-      console.log('token:  ', token)
-      router.push('/menu')
-      // setStatus(result.status + ': ' + result.data.user.username)
+        let result = await axios.post(URL,
+            { username, password, checktoken },
+            { withCredentials: true })
+        console.log('result: ', result)
+        console.log('result.data:  ', result.data)
+        console.log('token:  ', token)
+        router.push('/menu')
+        setStatus(result.status + ': ' + result.data.user.username)
     }
     catch (e) {
-      console.log('error: ', JSON.stringify(e.response))
-      // setStatus(JSON.stringify(e.response).substring(0, 80) + "...")
-      setStatus('User or Password invalid')
+        console.log('error: ', JSON.stringify(e.response))
+        setStatus(JSON.stringify(e.response).substring(0, 80) + "...")
     }
-  }
+}
 
   const copyText = () => {
     navigator.clipboard.writeText(token)
     console.log("copytoken:", token);
   }
-
-
 
   return (
     <Layout>

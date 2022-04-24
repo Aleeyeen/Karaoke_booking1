@@ -29,9 +29,9 @@ router.post('/login', (req, res, next) => {
         console.log('Login: ', req.body, user, err, info)
         if (err) return next(err)
         if (user) {
-            let expi = (req.body.checktoken == 'on') ? '7d' : '1d'
+            let exp = (req.body.checktoken == 'on') ? '7d' : '1d'
             const token = jwt.sign(user, db.SECRET, {
-                expiresIn: expi
+                expiresIn: exp
             })
             // req.cookie.token = token
             res.setHeader(
@@ -51,7 +51,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next)
 })
 
-router.get('/logout', (req, res) => {
+router.get('/logout', (req, res) => { 
     res.setHeader(
         "Set-Cookie",
         cookie.serialize("token", '', {
@@ -65,21 +65,28 @@ router.get('/logout', (req, res) => {
     res.statusCode = 200
     return res.json({ message: 'Logout successful' })
 })
- 
+
+router.get('/foo', 
+    passport.authenticate('jwt', { session : false }),
+    (req, res, next) =>{
+       return res.send({message: 'Foo'})
+
+    });
+
 /* GET user profile. */
 router.get('/profile',
     passport.authenticate('jwt', { session: false }),
-    (req, res, next) => { 
-        res.send( req.user)
+    (req, res, next) => {
+        res.send(req.user)
     });
 
-    router.post('/register',
+router.post('/register',
     async (req, res) => {
         try {
             const SALT_ROUND = 10
-            const { username, email, password } = req.body
+            const { username, email, password } = req.body 
             if (!username || !email || !password)
-                return res.json({ message: "Cannot register with empty string" })
+                return res.json( {message: "Cannot register with empty string"})
             if (db.checkExistingUser(username) !== db.NOT_FOUND)
                 return res.json({ message: "Duplicated user" })
 
@@ -92,11 +99,12 @@ router.get('/profile',
         }
     })
 
-router.get('/alluser', (req, res) => res.json(db.users.users))
+router.get('/alluser', (req,res) => res.json(db.users.users))
 
 router.get('/', (req, res, next) => {
     res.send('Respond without authentication');
 });
+
 
 /* -----------------------------------------------------------Booking Deluxe-------------------------------------------------------- */
 router.route('/bookingDeluxe')

@@ -23,7 +23,7 @@ export default function Register({ token }) {
             console.log('result: ', result)
             console.log('result.data:  ', result.data)
             console.log('token:  ', token)
-            // setStatus(result.data.message)
+            setStatus(result.data.message)
         }
         catch (e) {
             console.log(e)

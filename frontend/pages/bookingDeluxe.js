@@ -28,7 +28,7 @@ const Deluxe = ( {token}) => {
     }
 
     const updateBooking = async (id) => {
-        let _booking = await axios.put(`${URL}/${id}`, { name, surname, checkin, checkout })
+        let _booking = await axios.put(`${URL}/${id}`, { name, surname,date, checkin, checkout })
         mutate(URL)
     }
 

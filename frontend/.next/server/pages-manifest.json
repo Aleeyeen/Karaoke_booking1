@@ -3,5 +3,6 @@
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
   "/userDeluxe": "pages/userDeluxe.js",
-  "/bookingPrime": "pages/bookingPrime.js"
+  "/menu": "pages/menu.js",
+  "/": "pages/index.js"
 }

@@ -112,7 +112,7 @@ router.route('/bookingDeluxe')
         allnewuserbook1.checkout = req.body.checkout
         bookingDeluxe = {"list": [...bookingDeluxe.list, allnewuserbook1]}
 
-        res.send(comment)
+        res.send(bookingDeluxe)
     })
 
 router.route('/bookingDeluxe/:booking_id')
@@ -120,7 +120,90 @@ router.route('/bookingDeluxe/:booking_id')
         const bookingId = req.params.booking_id
         const id = bookingDeluxe.list.findIndex(item => +item.id === +bookingId)
         if (id >= 0){
-            res.send()
+            res.send(bookingDeluxe.list[id])
+        }
+        else {
+            res.send({ Status:"Can't found !!" })
+        }
+    })
+    .put((req, res) => {
+        const bookingId = req.params.booking_id
+        const id = bookingDeluxe.list.findIndex(item => +item.id === +bookingId)
+        if(id >= 0){
+            bookingDeluxe.list[id].name = req.body.name
+            bookingDeluxe.list[id].surname = req.body.surname
+            bookingDeluxe.list[id].date = req.body.date
+            bookingDeluxe.list[id].checkin = req.body.checkin
+            bookingDeluxe.list[id].checkout = req.body.checkout
+        }
+        else{
+            res.send({ Status: "Can't found"})
+        }
+    })
+    .delete((req, res) => {
+        const bookingId = req.params.booking_id
+        const id = bookingDeluxe.list.findIndex(item => +item.id === +bookingId)
+        if (id >= 0) {
+            bookingDeluxe.list = bookingDeluxe.list.filter(item => +item.id !== +bookingId)
+            res.send(bookingDeluxe)
+        }
+        else {
+            res.send({ Status: "Can't found !!" })
+        }
+    })
+
+/* -----------------------------------------------------------Booking Prime-------------------------------------------------------- */
+router.route('/bookingPrime')
+    .get((req, res) => res.send(bookingPrime))
+    .post((req, res) => {
+        let allnewuserbook2 = {}
+        allnewuserbook2.id = (bookingDeluxe.list.length) ? bookingDeluxe.list[bookingDeluxe.list.length - 1].id + 1 : 1
+        allnewuserbook2.name = req.body.name
+        allnewuserbook2.surname = req.body.surname
+        allnewuserbook2.email = req.body.email
+        allnewuserbook2.tel = req.body.tel
+        allnewuserbook2.date = req.body.date
+        allnewuserbook2.checkin = req.body.checkin
+        allnewuserbook2.checkout = req.body.checkout
+        bookingPrime = {"list": [...bookingPrime.list, allnewuserbook2]}
+
+        res.send(bookingPrime)
+    })
+
+router.route('/bookingPrime/:booking_id')
+    .get((req, res) => {
+        const bookingId = req.params.booking_id
+        const id = bookingPrime.list.findIndex(item => +item.id === +bookingId)
+        if (id >= 0){
+            res.send(bookingPrime.list[id])
+        }
+        else {
+            res.send({ Status:"Can't found !!" })
+        }
+    })
+    .put((req, res) => {
+        const bookingId = req.params.booking_id
+        const id = bookingPrime.list.findIndex(item => +item.id === +bookingId)
+        if(id >= 0){
+            bookingPrime.list[id].name = req.body.name
+            bookingPrime.list[id].surname = req.body.surname
+            bookingPrime.list[id].date = req.body.date
+            bookingPrime.list[id].checkin = req.body.checkin
+            bookingPrime.list[id].checkout = req.body.checkout
+        }
+        else{
+            res.send({ Status: "Can't found"})
+        }
+    })
+    .delete((req, res) => {
+        const bookingId = req.params.booking_id
+        const id = bookingPrime.list.findIndex(item => +item.id === +bookingId)
+        if (id >= 0) {
+            bookingPrime.list = bookingPrime.list.filter(item => +item.id !== +bookingId)
+            res.send(bookingPrime)
+        }
+        else {
+            res.send({ Status: "Can't found !!" })
         }
     })
 

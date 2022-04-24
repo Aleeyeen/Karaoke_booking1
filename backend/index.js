@@ -73,21 +73,22 @@ router.get('/profile',
         res.send( req.user)
     });
 
-router.post('/register',
+    router.post('/register',
     async (req, res) => {
         try {
             const SALT_ROUND = 10
-            const { username, email, age} = req.body
+            const { username, email, password } = req.body
+            if (!username || !email || !password)
+                return res.json({ message: "Cannot register with empty string" })
             if (db.checkExistingUser(username) !== db.NOT_FOUND)
-                return res.json({ status: "Duplicated user" })
+                return res.json({ message: "Duplicated user" })
 
             let id = (users.users.length) ? users.users[users.users.length - 1].id + 1 : 1
-            const password = await bcrypt.hash(req.body.password, SALT_ROUND)// build password
-            users.users.push({ id, username, password, email, age})
-            res.json({ message: "Register success" })
-        } catch(err) {
-            res.json({ message: "Cannot register" })
-            console.log(err)
+            hash = await bcrypt.hash(password, SALT_ROUND)
+            users.users.push({ id, username, password: hash, email })
+            res.status(200).json({ message: "Register success" })
+        } catch {
+            res.status(422).json({ message: "Cannot register" })
         }
     })
 
@@ -105,8 +106,6 @@ router.route('/bookingDeluxe')
         allnewuserbook1.id = (bookingDeluxe.list.length) ? bookingDeluxe.list[bookingDeluxe.list.length - 1].id + 1 : 1
         allnewuserbook1.name = req.body.name
         allnewuserbook1.surname = req.body.surname
-        allnewuserbook1.email = req.body.email
-        allnewuserbook1.tel = req.body.tel
         allnewuserbook1.date = req.body.date
         allnewuserbook1.checkin = req.body.checkin
         allnewuserbook1.checkout = req.body.checkout
@@ -160,8 +159,6 @@ router.route('/bookingPrime')
         allnewuserbook2.id = (bookingDeluxe.list.length) ? bookingDeluxe.list[bookingDeluxe.list.length - 1].id + 1 : 1
         allnewuserbook2.name = req.body.name
         allnewuserbook2.surname = req.body.surname
-        allnewuserbook2.email = req.body.email
-        allnewuserbook2.tel = req.body.tel
         allnewuserbook2.date = req.body.date
         allnewuserbook2.checkin = req.body.checkin
         allnewuserbook2.checkout = req.body.checkout

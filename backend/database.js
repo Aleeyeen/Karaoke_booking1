@@ -9,15 +9,15 @@ let users = {
 
 let bookingDeluxe ={
     list: [
-        { id: 1, name: 'Aleeyeen', surname: 'Mad-E',  date: '19/04/2022', checkin: '03:30 PM', checkout: '05:30 PM'},
-        { id: 2, name: 'Harista', surname: 'Wansoo',   date: '24/04/2022', checkin: '10:30 AM', checkout: '12:30 PM'}
+        { id: 1, name: 'Aleeyeen', surname: 'Mad-E',  date: '2022-04-19', checkin: '15:30 ', checkout: '17:30 '},
+        { id: 2, name: 'Harista', surname: 'Wansoo',   date: '2022-04-24', checkin: '10:30 ', checkout: '12:30 '}
     ]
 }
 
 let bookingPrime ={
     list:[
-        { id: 1, name: 'Aleeyeen', surname: 'Mad-E',  date: '19/04/2022', checkin: '03:30 PM', checkout: '05:30 PM'},
-        { id: 2, name: 'Harista', surname: 'Wansoo',   date: '24/04/2022', checkin: '10:30 AM', checkout: '12:30 PM'}
+        { id: 1, name: 'Aleeyeen', surname: 'Mad-E',  date: '2022-04-15', checkin: '15:30 ', checkout: '17:30'},
+        { id: 2, name: 'Harista', surname: 'Wansoo',   date: '2022-04-14', checkin: '10:30 ', checkout: '12:30'}
     ]
 } 
 

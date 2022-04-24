@@ -50,7 +50,7 @@ export default function Register({ token }) {
     return (
         <Layout>
             <Head>
-                <title>Online Community Blog</title>
+                <title>Online Karaoke Booking</title>
             </Head>
           
             <div className='flex flex-col fixed justify-start items-center h-screen w-screen'>  

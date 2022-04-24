@@ -4,10 +4,10 @@ const Navbar = () => (
         <Link href='/'>
             <a className='flex flex-col items-center divide-y-2 divide-white ml-4'>
                 <span className='text-xl text-white font-bold uppercase tracking-wide pb-1 text-center'>
-                    Online Community Blog
+                    Online Karaoke Booking
                 </span>
                 <span className='text-sm text-white font-bold uppercase tracking-wide text-center pt-2'>
-                    Prince of Songkla University Phuket Campus
+                    KARAOKE 24 HOURS
                 </span>
             </a>
         </Link>
@@ -21,11 +21,6 @@ const Navbar = () => (
                 <Link href='/menu'>
                     <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 mr-4 rounded text-white font-bold items-center justify-center hover:bg-blue hover:text-white'>
                         MENU
-                    </a>
-                </Link>
-                <Link href='/contectus'>
-                    <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 mr-4 rounded text-white font-bold items-center justify-center hover:bg-blue hover:text-white'>
-                        CONTECT US
                     </a>
                 </Link>
                 <Link href='/logout'>

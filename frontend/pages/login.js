@@ -43,7 +43,7 @@ export default function Login({ token }) {
   return (
     <Layout>
       <Head>
-        <title>Online Community Blog</title>
+        <title>Online Karaoke Booking</title>
       </Head>
       <div className='flex flex-col fixed justify-start items-center h-screen w-screen'>
         <div className='flex flex-col justify-center items-center w-1/4 h-24 mt-24 rounded-t-xl bg-bluesea divide-y-2 divide-black '>

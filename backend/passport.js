@@ -42,7 +42,7 @@ passport.use(
                     // Strip password out
                     const { id, username, email, age } = users.users[index]
                                     //Return to caller via req.user
-                    return cb(null, { id, username, email, age}); 
+                    return cb(null, { id, username, email, checktoken}); 
                 } else {
                     return cb(null, false);
                 }

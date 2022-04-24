@@ -44,13 +44,13 @@ export default function Login({ token }) {
       <div className='flex flex-col fixed justify-start items-center h-screen w-screen'>
         <div className='flex flex-col justify-center items-center w-1/4 h-24 mt-24 rounded-t-xl bg-bluesea divide-y-2 divide-black '>
           <span className='text-xl  font-bold uppercase tracking-wider pb-1 text-center'>Log in</span>
-          <span className='text-lg font-bold uppercase tracking-wide text-center pt-2'>From Admin</span>
+          <span className='text-lg font-bold uppercase tracking-wide text-center pt-2'>For Staff</span>
         </div>
         <div className='flex flex-col justify-start items-center w-1/4 bg-egg rounded-b-xl shadow-xl'>
           <div className='flex flex-col justify-center items-start w-4/5 mt-8'>
             <label className='font-semibold'>Username</label>
             <input className='w-full h-8 mt-2 border-2 border-gray-500 ring ring-gray-400  
-              rounded-md pl-2 focus:outline-none' placeholder='Foo'
+              rounded-md pl-2 focus:outline-none' placeholder='xxxxxx'
               onChange={(e) => setUsername(e.target.value)} />
             <label className='mt-4 font-semibold'>Password</label>
             <input className='w-full h-8 mt-2 border-2 border-gray-500 ring ring-gray-400 

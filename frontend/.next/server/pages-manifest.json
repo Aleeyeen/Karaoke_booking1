@@ -3,5 +3,5 @@
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
   "/userDeluxe": "pages/userDeluxe.js",
-  "/login": "pages/login.js"
+  "/bookingPrime": "pages/bookingPrime.js"
 }

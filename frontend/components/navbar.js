@@ -1,6 +1,6 @@
 import Link from 'next/link'
 const Navbar = () => (
-    <nav className='flex items-center bg-gradient-to-r from-green-500 to-blue-400 p-4 shadow-xl'>
+    <nav className='flex items-center bg-gradient-to-r from-pink-500 to-gray-600 p-4 shadow-xl'>
         <Link href='/'>
             <a className='flex flex-col items-center divide-y-2 divide-white ml-4'>
                 <span className='text-xl text-white font-bold uppercase tracking-wide pb-1 text-center'>

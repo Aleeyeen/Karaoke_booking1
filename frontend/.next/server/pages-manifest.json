@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/userDeluxe": "pages/userDeluxe.js",
-  "/menu": "pages/menu.js",
-  "/": "pages/index.js"
+  "/bookingPrime": "pages/bookingPrime.js",
+  "/logout": "pages/logout.js"
 }

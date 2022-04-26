@@ -82,7 +82,7 @@ const Prime = ( {token}) => {
     )
 }
 
-export default Prime
+export default authPrime(Prime)
 export function getServerSideProps({ req, res }) {
     // console.log("token from cookie: ",cookie.get("token"))
     // console.log('req: ', req.headers)

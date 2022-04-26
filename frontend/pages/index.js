@@ -13,7 +13,7 @@ export default function Home({ token }) {
       <div className = 'flex flex-col fixed justify-center items-center h-screen w-screen'>
         <div className = 'flex flex-col -mt-28 font-bold uppercase text-5xl text-center p-8'>
           <a className = 'animate-pulse'>Online Karaoke Booking</a>
-          <a className = 'animate-pulse mt-8'>Karaoke Sing a song</a>   
+          {/* <a className = 'animate-pulse mt-8'>Karaoke Sing a song</a>    */}
         </div>
           <div className = 'flex justify-around md:w-96 text-lg mt-8'>
             <Link href = '/login'>

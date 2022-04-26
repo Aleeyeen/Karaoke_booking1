@@ -3,7 +3,7 @@ const express = require('express'),
     passport = require('passport'),
     port = process.env.PORT || 80,
     cors = require('cors')
-    cookie = require('cookie')
+cookie = require('cookie')
 
 const bcrypt = require('bcrypt')
 
@@ -17,8 +17,14 @@ require('./passport.js')
 const router = require('express').Router(),
     jwt = require('jsonwebtoken')
 
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200
+}
+// app.use(cors({ origin: 'http://localhost:3000' }))
+app.use(cors(corsOptions));
 
-app.use(cors({ origin: 'http://localhost:3000' }))    
 
 app.use('/api', router)
 router.use(express.json())
@@ -51,7 +57,7 @@ router.post('/login', (req, res, next) => {
     })(req, res, next)
 })
 
-router.get('/logout', (req, res) => { 
+router.get('/logout', (req, res) => {
     res.setHeader(
         "Set-Cookie",
         cookie.serialize("token", '', {
@@ -66,10 +72,10 @@ router.get('/logout', (req, res) => {
     return res.json({ message: 'Logout successful' })
 })
 
-router.get('/foo', 
-    passport.authenticate('jwt', { session : false }),
-    (req, res, next) =>{
-       return res.send({message: 'Foo'})
+router.get('/foo',
+    passport.authenticate('jwt', { session: false }),
+    (req, res, next) => {
+        return res.send({ message: 'Foo' })
 
     });
 
@@ -84,9 +90,9 @@ router.post('/register',
     async (req, res) => {
         try {
             const SALT_ROUND = 10
-            const { username, email, password } = req.body 
+            const { username, email, password } = req.body
             if (!username || !email || !password)
-                return res.json( {message: "Cannot register with empty string"})
+                return res.json({ message: "Cannot register with empty string" })
             if (db.checkExistingUser(username) !== db.NOT_FOUND)
                 return res.json({ message: "Duplicated user" })
 
@@ -99,7 +105,7 @@ router.post('/register',
         }
     })
 
-router.get('/alluser', (req,res) => res.json(db.users.users))
+router.get('/alluser', (req, res) => res.json(db.users.users))
 
 router.get('/', (req, res, next) => {
     res.send('Respond without authentication');
@@ -117,7 +123,7 @@ router.route('/bookingDeluxe')
         allnewuserbook1.date = req.body.date
         allnewuserbook1.checkin = req.body.checkin
         allnewuserbook1.checkout = req.body.checkout
-        bookingDeluxe = {"list": [...bookingDeluxe.list, allnewuserbook1]}
+        bookingDeluxe = { "list": [...bookingDeluxe.list, allnewuserbook1] }
 
         res.send(bookingDeluxe)
     })
@@ -126,25 +132,25 @@ router.route('/bookingDeluxe/:booking_id')
     .get((req, res) => {
         const bookingId = req.params.booking_id
         const id = bookingDeluxe.list.findIndex(item => +item.id === +bookingId)
-        if (id >= 0){
+        if (id >= 0) {
             res.send(bookingDeluxe.list[id])
         }
         else {
-            res.send({ Status:"Can't found !!" })
+            res.send({ Status: "Can't found !!" })
         }
     })
     .put((req, res) => {
         const bookingId = req.params.booking_id
         const id = bookingDeluxe.list.findIndex(item => +item.id === +bookingId)
-        if(id >= 0){
+        if (id >= 0) {
             bookingDeluxe.list[id].name = req.body.name
             bookingDeluxe.list[id].surname = req.body.surname
             bookingDeluxe.list[id].date = req.body.date
             bookingDeluxe.list[id].checkin = req.body.checkin
             bookingDeluxe.list[id].checkout = req.body.checkout
         }
-        else{
-            res.send({ Status: "Can't found"})
+        else {
+            res.send({ Status: "Can't found" })
         }
     })
     .delete((req, res) => {
@@ -170,7 +176,7 @@ router.route('/bookingPrime')
         allnewuserbook2.date = req.body.date
         allnewuserbook2.checkin = req.body.checkin
         allnewuserbook2.checkout = req.body.checkout
-        bookingPrime = {"list": [...bookingPrime.list, allnewuserbook2]}
+        bookingPrime = { "list": [...bookingPrime.list, allnewuserbook2] }
 
         res.send(bookingPrime)
     })
@@ -179,25 +185,25 @@ router.route('/bookingPrime/:booking_id')
     .get((req, res) => {
         const bookingId = req.params.booking_id
         const id = bookingPrime.list.findIndex(item => +item.id === +bookingId)
-        if (id >= 0){
+        if (id >= 0) {
             res.send(bookingPrime.list[id])
         }
         else {
-            res.send({ Status:"Can't found !!" })
+            res.send({ Status: "Can't found !!" })
         }
     })
     .put((req, res) => {
         const bookingId = req.params.booking_id
         const id = bookingPrime.list.findIndex(item => +item.id === +bookingId)
-        if(id >= 0){
+        if (id >= 0) {
             bookingPrime.list[id].name = req.body.name
             bookingPrime.list[id].surname = req.body.surname
             bookingPrime.list[id].date = req.body.date
             bookingPrime.list[id].checkin = req.body.checkin
             bookingPrime.list[id].checkout = req.body.checkout
         }
-        else{
-            res.send({ Status: "Can't found"})
+        else {
+            res.send({ Status: "Can't found" })
         }
     })
     .delete((req, res) => {

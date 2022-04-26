@@ -53,7 +53,7 @@ export default function Register({ token }) {
                 <title>Online Karaoke Booking</title>
             </Head>
           
-            <div className='flex flex-col fixed justify-start items-center h-screen w-screen'>  
+            <div className='flex flex-col fixed justify-start items-center h-screen w-screen' >  
                 <div className='flex flex-col justify-center items-center w-1/4 h-24 mt-16 rounded-t-xl 
                 bg-bluesea divide-y-2 divide-black '>
                     <span className='text-xl  font-bold uppercase tracking-wider pb-1 text-center'>Register</span>

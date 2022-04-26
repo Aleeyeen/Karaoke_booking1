@@ -51,7 +51,6 @@ const Deluxe = ( {token}) => {
               <a className='font-semibold'>CheckOut :</a> {item.checkout}
             </div>
             <div className='flex justify-end w-full mt-2'>
-              <button className='border-2 border-green-900 bg-green w-16 h-8 rounded-md hover:bg-babygreen focus:outline-none' onClick={() => updateBooking(item.id)}>Edit</button>
               <button className='border-2 border-red-900 bg-darkred w-16 h-8 ml-4 rounded-md hover:bg-babyred focus:outline-none' onClick={() => deleteBooking(item.id)}>Cancel</button>
             </div>
           </div>
